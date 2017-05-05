@@ -64,3 +64,6 @@ gem 'kaminari', '~> 0.17.0'
 
 # Authentication
 gem 'devise', '~> 4.2', '>= 4.2.1'
+
+# Authorization
+gem 'petergate', '~> 1.7', '>= 1.7.3'
