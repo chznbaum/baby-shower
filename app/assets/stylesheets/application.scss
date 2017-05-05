@@ -177,6 +177,22 @@ body {
   .masthead,
   .mastfoot,
   .cover-container {
-    width: 42rem;
+    width: 55rem;
   }
+}
+
+/*
+ * Custom Styles
+ */
+
+.card-block {
+  color: rgba(0,0,0,0.875);
+
+  form {
+    text-align: left;
+  }
+}
+
+.auth-links a {
+  color: rgba(0,0,0,0.875);
 }
