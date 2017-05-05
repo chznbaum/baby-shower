@@ -1,24 +1,23 @@
-# README
+# Baby Shower Application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is an application for a mother-to-be to manage an upcoming baby shower, provide microblog/photo updates to family and friends, and interact with loved ones through comments.
 
-Things you may want to cover:
+## Getting Started
 
-* Ruby version
+To get started with the app, clone the repo and then install the necessary gems:
 
-* System dependencies
+```
+$ bundle install
+```
 
-* Configuration
+Next, migrate the database:
 
-* Database creation
+```
+$ rails db:migrate
+```
 
-* Database initialization
+Finally, run the app in a local server:
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+$ rails server
+```
