@@ -7,6 +7,7 @@ class UpdatesController < ApplicationController
   # GET /updates.json
   def index
     @updates = Update.all
+    @page_title = "Updates"
   end
 
   # GET /updates/1
@@ -17,10 +18,12 @@ class UpdatesController < ApplicationController
   # GET /updates/new
   def new
     @update = Update.new
+    @page_title = "Write a New Update"
   end
 
   # GET /updates/1/edit
   def edit
+    @page_title = "Editing Update # #{@update.id}"
   end
 
   # POST /updates
