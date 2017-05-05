@@ -1,6 +1,8 @@
 class UpdatesController < ApplicationController
   before_action :set_update, only: [:show, :edit, :update, :destroy]
 
+  layout 'update'
+
   # GET /updates
   # GET /updates.json
   def index
