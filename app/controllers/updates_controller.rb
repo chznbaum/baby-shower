@@ -6,7 +6,7 @@ class UpdatesController < ApplicationController
   # GET /updates
   # GET /updates.json
   def index
-    @updates = Update.all
+    @updates = Update.page(params[:page]).per(15)
     @page_title = "Updates"
   end
 
