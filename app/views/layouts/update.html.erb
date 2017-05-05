@@ -15,18 +15,21 @@
   </head>
 
   <body>
-    <div class="site-wrapper">
-      <div class="site-wrapper-inner">
-        <div class="cover-container">
+    <%= render 'shared/update_nav' %>
 
-          <%= render 'shared/application_nav' %>
+    <%= render 'shared/update_header' %>
+
+      <div class="container">
+        <div class="row">
 
           <%= yield %>
 
-          <%= render 'shared/application_footer' %>
+          <%= render 'shared/update_sidebar' %>
 
-        </div>
-      </div>
-    </div>
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+
+      <%= render 'shared/update_footer' %>
+
   </body>
 </html>
