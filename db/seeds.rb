@@ -15,8 +15,8 @@
     end
     Update.create!(
         body: Faker::Lorem.words(15).join(" "),
-        image: "http://placehold.it/350x200"
+        image: "http://placehold.it/800x400"
     )
 end
 
-puts "#{Blog.count} blog posts created."
+puts "#{Update.count} updates created."
