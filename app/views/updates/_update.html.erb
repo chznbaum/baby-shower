@@ -2,7 +2,7 @@
     <%= image_tag update.image, alt: "", class: "card-img-top" unless update.image.nil? %>
     <div class="card-block">
         <p class="card-text"><%= update.body %></p>
-        <p class="card-text blog-post-meta"><%= update.created_at %></p>
+        <p class="card-text blog-post-meta"><%= time_ago_in_words(update.created_at) %> ago</p>
         <p class="card-text blog-post-meta">
             <%= link_to 'Edit', edit_update_path(update), class: "btn btn-secondary" %>
             <%= link_to 'Delete Update', update, method: :delete, data: { confirm: 'Are you sure you want to delete that update?' }, class: "btn btn-danger" %>
