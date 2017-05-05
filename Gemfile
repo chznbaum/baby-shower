@@ -54,3 +54,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # View Methods
 gem 'chznbaum_view_tool', '~> 0.1.0'
+
+# Bootstrap
+gem 'bootstrap', '~> 4.0.0.alpha6'
