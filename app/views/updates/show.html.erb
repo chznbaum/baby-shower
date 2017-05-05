@@ -1,0 +1,9 @@
+<div class="col-sm-8 blog-main">
+
+  <p><%= @update.body %></p>
+
+  <%= image_tag @update.image, alt:"" unless @update.image.nil? %>
+
+  <p><%= link_to 'Edit', edit_update_path(@update) %> |
+  <%= link_to 'Back', updates_path %></p>
+</div><!-- /.blog-main -->

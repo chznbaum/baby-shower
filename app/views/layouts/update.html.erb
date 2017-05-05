@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title><%= @page_title %> | <%= @mother_to_be %>'s Baby Shower</title>
+    <%= csrf_meta_tags %>
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="<%= @seo_keywords %>">
+
+    <%= stylesheet_link_tag    'updates', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= render 'shared/update_nav' %>
+
+    <%= render 'shared/update_header' %>
+
+      <div class="container">
+        <div class="row">
+
+          <%= yield %>
+
+          <%= render 'shared/update_sidebar' %>
+
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+
+      <%= render 'shared/update_footer' %>
+
+  </body>
+</html>

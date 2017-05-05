@@ -1,0 +1,8 @@
+<div class="blog-post">
+    <p><%= update.body %></p>
+    <%= image_tag update.image, alt:"" unless update.image.nil? %>
+    <p class="blog-post-meta"><%= update.created_at %></p>
+    <p class="blog-post-meta">
+        <%= link_to 'Edit', edit_update_path(update) %> / 
+        <%= link_to 'Delete Update', update, method: :delete, data: { confirm: 'Are you sure you want to delete that update?' } %></p>
+</div><!-- /.blog-post -->

@@ -38,6 +38,7 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'faker'
 end
 
 group :development do
@@ -57,3 +58,6 @@ gem 'chznbaum_view_tool', '~> 0.1.0'
 
 # Bootstrap
 gem 'bootstrap', '~> 4.0.0.alpha6'
+
+# Pagination
+gem 'kaminari', '~> 0.17.0'
