@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :updates
   get 'about', to: 'pages#about'
 
   get 'help', to: 'pages#help'
