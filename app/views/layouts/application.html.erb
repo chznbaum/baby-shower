@@ -19,28 +19,11 @@
       <div class="site-wrapper-inner">
         <div class="cover-container">
 
-          <!-- Begin nav -->
-          <div class="masthead clearfix">
-            <div class="inner">
-              <h3 class="masthead-brand">Baby Shower</h3>
-              <nav class="nav nav-masthead">
-                <a class="nav-link active" href="#">Home</a>
-                <a class="nav-link" href="#">Features</a>
-                <a class="nav-link" href="#">Contact</a>
-              </nav>
-            </div>
-          </div>
-          <!-- End nav -->
+          <%= render 'shared/application_nav' %>
 
           <%= yield %>
 
-          <!-- Begin footer -->
-          <div class="mastfoot">
-            <div class="inner">
-              <p>Cover template for <a href="https://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-            </div>
-          </div>
-          <!-- End footer -->
+          <%= render 'shared/application_footer' %>
 
         </div>
       </div>
