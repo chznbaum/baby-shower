@@ -21,3 +21,7 @@ Finally, run the app in a local server:
 ```
 $ rails server
 ```
+
+## Note
+
+Images in assets beginning with 'shutterstock' are licensed through Shutterstock. When choosing to utilize this application to build your own application, you must either replace the Shutterstock images in your application or license the images yourself.
