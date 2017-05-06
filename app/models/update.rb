@@ -1,5 +1,5 @@
 class Update < ApplicationRecord
-    validates_presence_of :body
+    validates_presence_of :body, :user_id
 
     belongs_to :user
 
