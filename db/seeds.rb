@@ -11,43 +11,43 @@ User.create!(name: "Admin User",
              email: "admin@example.com",
              password: "passwordpassword",
              roles: "admin",
-             avatar: "http://placehold.it/128x128")
+             avatar: "http://placehold.it/250x250")
 
 User.create!(name: "Helper User",
              email: "helper@example.com",
              password: "passwordpassword",
              roles: "helper",
-             avatar: "http://placehold.it/128x128")
+             avatar: "http://placehold.it/250x250")
 
 User.create!(name: "Second Helper",
              email: "helper2@example.com",
              password: "passwordpassword",
              roles: "helper",
-             avatar: "http://placehold.it/128x128")
+             avatar: "http://placehold.it/250x250")
 
 User.create!(name: "Example User",
              email: "example@example.com",
              password: "passwordpassword",
              roles: "helper",
-             avatar: "http://placehold.it/128x128")
+             avatar: "http://placehold.it/250x250")
 
 User.create!(name: "Mom User",
              email: "mom@example.com",
              password: "passwordpassword",
              roles: "mom",
-             avatar: "http://placehold.it/128x128")
+             avatar: "http://placehold.it/250x250")
 
 User.create!(name: "Regular User",
              email: "regular@example.com",
              password: "passwordpassword",
              roles: "user",
-             avatar: "http://placehold.it/128x128")
+             avatar: "http://placehold.it/250x250")
 
 User.create!(name: "Second Regular",
              email: "regular2@example.com",
              password: "passwordpassword",
              roles: "user",
-             avatar: "http://placehold.it/128x128")
+             avatar: "http://placehold.it/250x250")
 
 puts "#{User.count} users created."
 
