@@ -4,7 +4,9 @@
     <p class="alert"><%= alert %></p>
 
     <% unless @user.updates.count == 0 %>
-        <%= render @user.updates %>
+        <%= render @updates %>
+
+        <%= paginate @updates %>
     <% end %>
     <p><%= link_to 'Back to Users', users_path, class: "btn btn-secondary" %></p>
 </div><!-- /.blog-main -->

@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.page(params[:page]).per(15)
+    @users = User.page(params[:page]).per(10)
     @page_title = "Users"
     @description = Faker::Lorem.words(25).join(" ")
   end
@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   def show
       @page_title = @user.name
       @description = Faker::Lorem.words(15).join(" ")
+      @updates = @user.updates.page(params[:page]).per(10)
   end
 
   private

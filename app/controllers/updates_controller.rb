@@ -8,7 +8,7 @@ class UpdatesController < ApplicationController
   # GET /updates
   # GET /updates.json
   def index
-    @updates = Update.page(params[:page]).per(15)
+    @updates = Update.page(params[:page]).per(10)
     @page_title = "Updates"
   end
 
