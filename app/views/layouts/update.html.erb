@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title><%= @page_title %> | <%= @mother_to_be %>'s Baby Shower</title>
+    <title><%= @page_title %> | <%= @mother_to_be.name %>'s Baby Shower</title>
     <%= csrf_meta_tags %>
 
     <meta name="description" content="">
@@ -17,7 +17,15 @@
   <body>
     <%= render 'shared/update_nav' %>
 
-    <%= render 'shared/update_header' %>
+    <% if @user && current_page?(user_path) %>
+
+      <%= render 'shared/user_profile_header' %>
+    
+    <% else %>
+      
+      <%= render 'shared/update_header' %>
+    
+    <% end %>
 
       <div class="container">
         <div class="row">

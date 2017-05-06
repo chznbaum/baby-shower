@@ -1,13 +1,35 @@
-<a href="<%= update_path(update) %>"><div class="card blog-post">
-    <%= image_tag update.image, alt: "", class: "img-fluid card-img-top" unless update.image.nil? %>
+<div class="card blog-post">
     <div class="card-block">
-        <p class="card-text"><%= update.body %></p>
-        <p class="card-text blog-post-meta">Posted <%= time_ago_in_words(update.created_at) %> ago by <%= update.user.name %></p>
-        <p class="card-text blog-post-meta">
-            <% if current_user.has_roles?(:admin, :mom, :helper) %>
-                <%= link_to 'Edit', edit_update_path(update), class: "btn btn-secondary" %>
-                <%= link_to 'Delete Update', update, method: :delete, data: { confirm: 'Are you sure you want to delete that update?' }, class: "btn btn-danger" %>
-            <% end %>
-        </p>
+        <div class="row">
+            <div class="col-sm-3">
+                <%= image_tag update.user.avatar, alt: "", class: "img-fluid rounded" unless update.user.avatar.nil? %>
+            </div>
+            <div class="col-sm-9">
+                <div class="row">
+                    <p class="h5"><%= link_to update.user.name, user_path(update.user) %></p>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="row">
+                            <p class="lead card-text"><%= update.body %></p>
+                        </div>
+                        <div class="row">
+                            <%= image_tag update.image, alt: "", class: "img-fluid card-img-top" unless update.image.nil? %>
+                        </div>
+                        <div class="row">
+                            <p class="card-text blog-post-meta">Posted <%= time_ago_in_words(update.created_at) %> ago</p>
+                        </div>
+                        <div class="row">
+                            <% if current_user.has_roles?(:admin, :mom, :helper) && update.user == current_user %>
+                                <p class="card-text blog-post-meta">
+                                    <%= link_to 'Edit', edit_update_path(update), class: "btn btn-secondary" %>
+                                    <%= link_to 'Delete Update', update, method: :delete, data: { confirm: 'Are you sure you want to delete that update?' }, class: "btn btn-danger" %>
+                                </p>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div></a><!-- /.blog-post -->
+</div><!-- /.blog-post -->

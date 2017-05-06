@@ -1,9 +1,9 @@
 <div class="blog-header">
     <div class="container">
         <h1 class="blog-title"><%= @page_title %></h1>
-        <p class="lead blog-description">The latest updates on <%= @mother_to_be %>'s Baby Shower</p>
+        <p class="lead blog-description"><%= @mother_to_be.name %>'s Baby Shower</p>
         <% if current_user.has_roles?(:admin, :mom, :helper) %>
-            <%= link_to "Write a New Update", new_update_path %>
+            <%= link_to "Write an Update", new_update_path, class: "btn btn-secondary" %>
         <% end %>
     </div>
 </div>

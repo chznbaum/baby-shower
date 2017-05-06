@@ -1,0 +1,17 @@
+<div class="card blog-post">
+    <div class="card-block">
+        <div class="row">
+            <div class="col-sm-3">
+                <%= image_tag user.avatar, alt: "", class: "img-fluid rounded" unless user.avatar.nil? %>
+            </div>
+            <div class="col-sm-9">
+                <div class="row">
+                    <p class="h5"><%= link_to user.name, user_path(user) %></p>
+                </div>
+                <div class="row">
+                    <p class="lead card-text"><%= @description %></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- /.blog-post -->

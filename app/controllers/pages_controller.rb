@@ -3,7 +3,7 @@ class PagesController < ApplicationController
   end
 
   def about
-    @page_title = "About #{@mother_to_be}"
+    @page_title = "About #{@mother_to_be.name}"
   end
 
   def help

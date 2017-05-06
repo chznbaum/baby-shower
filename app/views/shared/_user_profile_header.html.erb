@@ -1,0 +1,21 @@
+<div class="profile-header">
+    <%= image_tag "http://placehold.it/1500x200", alt: "", class: "img-fluid cover-image" %>
+    <div>
+        <div class="row">
+            <div class="col-2 offset-sm-1 show-avatar">
+                <%= image_tag @user.avatar, alt: "", class: "img-fluid rounded" unless @user.avatar.nil? %>
+                <h2><%= @user.name %></h2>
+            </div>
+            <div class="col-8">
+                <div class="row">
+                    <p class="lead"><%= @description %></p>
+                </div>
+                <% if @user == current_user%>
+                    <div class="row">
+                        <p><%= link_to "Edit Profile", edit_registration_path(current_user), class: "btn btn-secondary" %></p>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
