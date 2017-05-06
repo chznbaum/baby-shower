@@ -19,12 +19,22 @@
                 </div>
                 <div class="row">
                     <% if comment.user == current_user %>
-                        <p class="card-text blog-post-meta">
-                            <%= link_to 'Edit', edit_comment_path(comment), class: "btn btn-secondary" %>
-                            <%= link_to 'Delete Comment', comment, method: :delete, data: { confirm: 'Are you sure you want to delete that comment?' }, class: "btn btn-danger" %>
-                        </p>
+                        <div class="col-6 card-text blog-post-meta">
+                            <%= link_to 'Edit', edit_comment_path(comment), class: "btn btn-secondary btn-block" %>
+                        </div>
+                        <div class="col-6 card-text blog-post-meta">
+                            <%= link_to 'Delete Comment', comment, method: :delete, data: { confirm: 'Are you sure you want to delete that comment?' }, class: "btn btn-danger btn-block" %>
+                        </div>
                     <% end %>
                 </div>
+                <div class="row">
+                                <div class="col-6 card-text blog-post-meta">
+                                    <%= link_to pluralize(comment.comments.count, "Reply"), update_path(@update), class: "btn btn-secondary btn-block" %>
+                                </div>
+                                <div class="col-6 card-text blog-post-meta">
+                                    <%= link_to '0 Likes', update_path(@update), class: "btn btn-secondary btn-block" %>
+                                </div>
+                            </div>
             </div>
         </div>
     </div>
