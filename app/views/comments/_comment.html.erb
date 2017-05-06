@@ -29,10 +29,12 @@
         </div>
     </div>
 </div>
-<%= form_for [@user, comment, Comment.new] do |f| %>
-    <%= f.text_area :body, placeholder: "Add a Reply", class: "form-control" %><br/>
-    <%= f.hidden_field :comment_id, value: comment.id %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.submit "Reply", class: "btn btn-secondary comment-button" %>
+<% unless current_user.is_a?(GuestUser) %>
+    <%= form_for [@user, comment, Comment.new] do |f| %>
+        <%= f.text_area :body, placeholder: "Add a Reply", class: "form-control" %><br/>
+        <%= f.hidden_field :comment_id, value: comment.id %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.submit "Reply", class: "btn btn-secondary comment-button" %>
+    <% end %>
 <% end %>
 <%= render partial: 'comments/comment', collection: comment.comments %>
