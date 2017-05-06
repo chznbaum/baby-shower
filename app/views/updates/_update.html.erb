@@ -1,8 +1,8 @@
-<a href="<%= update_path(update) %>"><div class="card blog-post">
+<div class="card blog-post">
     <%= image_tag update.image, alt: "", class: "img-fluid card-img-top" unless update.image.nil? %>
     <div class="card-block">
         <p class="lead card-text"><%= update.body %></p>
-        <p class="card-text blog-post-meta">Posted <%= time_ago_in_words(update.created_at) %> ago by <%= update.user.name %></p>
+        <p class="card-text blog-post-meta">Posted <%= time_ago_in_words(update.created_at) %> ago by <%= link_to update.user.name, user_path(update.user) %></p>
         <p class="card-text blog-post-meta">
             <% if current_user.has_roles?(:admin, :mom, :helper) && update.user == current_user %>
                 <%= link_to 'Edit', edit_update_path(update), class: "btn btn-secondary" %>
@@ -10,4 +10,4 @@
             <% end %>
         </p>
     </div>
-</div></a><!-- /.blog-post -->
+</div><!-- /.blog-post -->

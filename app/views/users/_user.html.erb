@@ -1,4 +1,4 @@
-<a href="<%= user_path(user) %>"><div class="card blog-post">
+<div class="card blog-post">
     <div class="card-block">
         <div class="row">
             <div class="col-sm-3">
@@ -6,7 +6,7 @@
             </div>
             <div class="col-sm-9">
                 <div class="row">
-                    <p class="h5"><%= user.name %></p>
+                    <p class="h5"><%= link_to user.name, user_path(user) %></p>
                 </div>
                 <div class="row">
                     <p class="lead card-text"><%= @description %></p>
@@ -14,4 +14,4 @@
             </div>
         </div>
     </div>
-</div></a><!-- /.blog-post -->
+</div><!-- /.blog-post -->
