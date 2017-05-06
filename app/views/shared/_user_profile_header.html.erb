@@ -10,6 +10,11 @@
                 <div class="row">
                     <p class="lead"><%= @description %></p>
                 </div>
+                <% if @user == current_user%>
+                    <div class="row">
+                        <p><%= link_to "Edit Profile", edit_registration_path(current_user), class: "btn btn-secondary" %></p>
+                    </div>
+                <% end %>
             </div>
         </div>
     </div>

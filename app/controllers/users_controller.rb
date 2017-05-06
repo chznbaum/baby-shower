@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
       @page_title = @user.name
-      @description = Faker::Lorem.words(25).join(" ")
+      @description = Faker::Lorem.words(15).join(" ")
   end
 
   private

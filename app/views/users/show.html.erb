@@ -3,7 +3,9 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
-    <h3>Updates</h3>
-    <%= render @user.updates %>
+    <% unless @user.updates.count == 0 %>
+        <h3>Updates</h3>
+        <%= render @user.updates %>
+    <% end %>
     <p><%= link_to 'Back', users_path %></p>
 </div><!-- /.blog-main -->
