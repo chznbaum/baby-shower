@@ -4,7 +4,6 @@
     <p class="alert"><%= alert %></p>
 
     <% unless @user.updates.count == 0 %>
-        <h3>Updates</h3>
         <%= render @user.updates %>
     <% end %>
     <p><%= link_to 'Back to Users', users_path, class: "btn btn-secondary" %></p>
