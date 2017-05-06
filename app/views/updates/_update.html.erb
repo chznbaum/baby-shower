@@ -1,7 +1,7 @@
 <a href="<%= update_path(update) %>"><div class="card blog-post">
     <%= image_tag update.image, alt: "", class: "img-fluid card-img-top" unless update.image.nil? %>
     <div class="card-block">
-        <p class="card-text"><%= update.body %></p>
+        <p class="lead card-text"><%= update.body %></p>
         <p class="card-text blog-post-meta">Posted <%= time_ago_in_words(update.created_at) %> ago by <%= update.user.name %></p>
         <p class="card-text blog-post-meta">
             <% if current_user.has_roles?(:admin, :mom, :helper) %>

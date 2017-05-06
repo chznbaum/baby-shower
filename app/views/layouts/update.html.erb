@@ -17,7 +17,15 @@
   <body>
     <%= render 'shared/update_nav' %>
 
-    <%= render 'shared/update_header' %>
+    <% if @user && current_page?(user_path) %>
+
+      <%= render 'shared/user_profile_header' %>
+    
+    <% else %>
+      
+      <%= render 'shared/update_header' %>
+    
+    <% end %>
 
       <div class="container">
         <div class="row">
