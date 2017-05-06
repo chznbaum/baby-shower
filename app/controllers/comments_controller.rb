@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
         @comment = Comment.new
     end
 
+
     def create
         @comment = @commentable.comments.new(comment_params)
 
@@ -25,4 +26,5 @@ class CommentsController < ApplicationController
         @commentable = Comment.find(params[:comment_id]) if params[:comment_id]
         @commentable = @update = Update.find(params[:update_id]) if params[:update_id]
     end
+
 end
