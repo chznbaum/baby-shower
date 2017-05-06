@@ -16,5 +16,15 @@
         </p>
     </div>
   </div>
+  <h2><%= pluralize(@update.comments.count, "Comment") %></h2>
+<%= form_for [@user, @update, Comment.new] do |f| %>
+    <%= f.text_area :body, placeholder: "Add a comment" %><br/>
+    <%= f.hidden_field :update_id, value: @update.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.submit "Add Comment" %>
+<% end %>
+<ul>
+    <%= render(partial: 'comments/comment', collection: @update.comments) %>
+</ul>
   <p><%= link_to 'Back', updates_path %></p>
 </div><!-- /.blog-main -->
