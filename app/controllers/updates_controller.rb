@@ -19,7 +19,7 @@ class UpdatesController < ApplicationController
 
   # GET /updates/new
   def new
-    @update = Update.new
+    @update = current_user.updates.new
     @page_title = "Write a New Update"
   end
 
@@ -31,7 +31,7 @@ class UpdatesController < ApplicationController
   # POST /updates
   # POST /updates.json
   def create
-    @update = Update.new(update_params)
+    @update = current_user.updates.build(update_params)
 
     respond_to do |format|
       if @update.save
@@ -76,6 +76,6 @@ class UpdatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def update_params
-      params.require(:update).permit(:body, :image)
+      params.require(:update).permit(:body, :image, :user_id)
     end
 end
