@@ -88,3 +88,12 @@ end
 end
 
 puts "#{Comment.count} comments created."
+
+Event.create!(
+    title:  "#{User.where(roles: "mom").order("created_at DESC").first.name}'s Baby Shower",
+    description: Faker::Lorem.sentences(20).join(" "),
+    event_datetime: 3.months.from_now,
+    rsvp_datetime: 2.months.from_now
+)
+
+puts "#{Event.count} events created."
