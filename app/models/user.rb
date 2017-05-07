@@ -16,7 +16,9 @@ class User < ApplicationRecord
   
   validates_presence_of :name
 
-  has_many :updates
+  has_many :updates, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   def first_name
     self.name.split.first

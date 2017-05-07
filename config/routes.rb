@@ -2,7 +2,14 @@ Rails.application.routes.draw do
 
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
   resources :users, only: [:index, :show]
-  resources :updates
+  resources :updates do
+    resources :comments
+    resources :likes
+  end
+  resources :comments do
+    resources :comments
+    resources :likes
+  end
   get 'about', to: 'pages#about'
 
   get 'help', to: 'pages#help'

@@ -1,0 +1,44 @@
+<div class="row comment-row">
+    <div class="col-sm-3">
+        <%= image_tag comment.user.avatar, alt: "", class: "img-fluid rounded" unless comment.user.avatar.nil? %>
+    </div>
+    <div class="col-sm-9">
+        <div class="row">
+            <p class="h5"><%= link_to comment.user.name, user_path(comment.user) %></p>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <p>Replying to <%= link_to comment.commentable.user.name, user_path(comment.commentable.user) %></p>
+                </div>
+                <div class="row">
+                    <p class="lead"><%= comment.body %></p>
+                </div>
+                <div class="row">
+                    <p>Posted <%= time_ago_in_words(comment.created_at) %> ago</p>
+                </div>
+                <div class="row">
+                    <div class="col-6 card-text blog-post-meta">
+                        <%= link_to pluralize(comment.comments.count, "Reply"), update_path(@update), class: "btn btn-secondary btn-block" %>
+                    </div>
+                    <div class="col-6 card-text blog-post-meta">
+                        <%= form_for [comment, Like.new] do |f| %>
+                            <%= f.hidden_field :comment_id, value: comment.id %>
+                            <%= f.hidden_field :user_id, value: current_user.id %>
+                            <%= f.submit pluralize(comment.likes.count, 'Like'), class: "btn btn-secondary btn-block" %>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% unless current_user.is_a?(GuestUser) %>
+    <%= form_for [@user, comment, Comment.new] do |f| %>
+        <%= f.text_area :body, placeholder: "Add a Reply", class: "form-control" %><br/>
+        <%= f.hidden_field :comment_id, value: comment.id %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.submit "Reply", class: "btn btn-secondary comment-button" %>
+    <% end %>
+<% end %>
+<%= render partial: 'comments/comment', collection: comment.comments %>
