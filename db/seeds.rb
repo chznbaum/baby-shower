@@ -53,7 +53,7 @@ puts "#{User.count} users created."
 
 # Updates
 
-10.times do |x|
+10.times do
     3.times do |update|
         Update.create!(
             body: Faker::Lorem.words(20).join(" "),
@@ -68,3 +68,23 @@ puts "#{User.count} users created."
 end
 
 puts "#{Update.count} updates created."
+
+80.times do
+    Comment.create!(
+        body: Faker::Lorem.words(15).join(" "),
+        user_id: rand(1..User.count),
+        commentable_id: rand(1..Update.count),
+        commentable_type: "Update"
+    )
+end
+
+100.times do
+    Comment.create!(
+        body: Faker::Lorem.words(15).join(" "),
+        user_id: rand(1..User.count),
+        commentable_id: rand(41..(41 + Comment.count)),
+        commentable_type: "Comment"
+    )
+end
+
+puts "#{Comment.count} comments created."
