@@ -22,7 +22,11 @@
                         <%= link_to pluralize(comment.comments.count, "Reply"), update_path(@update), class: "btn btn-secondary btn-block" %>
                     </div>
                     <div class="col-6 card-text blog-post-meta">
-                        <%= link_to '0 Likes', update_path(@update), class: "btn btn-secondary btn-block" %>
+                        <%= form_for [comment, Like.new] do |f| %>
+                            <%= f.hidden_field :comment_id, value: comment.id %>
+                            <%= f.hidden_field :user_id, value: current_user.id %>
+                            <%= f.submit pluralize(comment.likes.count, 'Like'), class: "btn btn-secondary btn-block" %>
+                        <% end %>
                     </div>
                 </div>
             </div>

@@ -34,7 +34,11 @@
                                 <%= link_to pluralize(update.comments.count, "Comment"), update_path(update), class: "btn btn-secondary btn-block" %>
                             </div>
                             <div class="col-6 card-text blog-post-meta">
-                                <%= link_to '0 Likes', update_path(update), class: "btn btn-secondary btn-block" %>
+                                <%= form_for [update, Like.new] do |f| %>
+                                    <%= f.hidden_field :update_id, value: update.id %>
+                                    <%= f.hidden_field :user_id, value: current_user.id %>
+                                    <%= f.submit pluralize(update.likes.count, 'Like'), class: "btn btn-secondary btn-block" %>
+                                <% end %>
                             </div>
                         </div>
                     </div>

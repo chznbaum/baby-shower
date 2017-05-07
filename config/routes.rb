@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
   resources :updates do
     resources :comments
+    resources :likes
   end
   resources :comments do
     resources :comments
+    resources :likes
   end
   get 'about', to: 'pages#about'
 
