@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
+  layout 'update'
+
   access all: [:show, :index], user: { except: [:destroy, :new, :create, :update, :edit]}, mom: :all, helper: :all, admin: :all
 
   # GET /events
