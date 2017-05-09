@@ -29,6 +29,19 @@
                 </div>
             </div>
         </div>
+        <div class="card-block">
+            <% unless current_user.is_a?(GuestUser) %>
+                <%= form_for [@user, @event, Comment.new] do |f| %>
+                    <%= f.text_area :body, placeholder: "Add a comment", class: "form-control" %>
+                    <%= f.hidden_field :event_id, value: @event.id %>
+                    <%= f.hidden_field :user_id, value: current_user.id %>
+                    <%= f.submit "Add Comment", class: "btn btn-secondary" %>
+                <% end %>
+            <% end %>
+        </div>
+        <div class="card-block">
+            <%= render(partial: 'comments/comment', collection: @event.comments) %>
+        </div>
     </div><!-- /.blog-post -->
         
     <p><%= link_to 'Back to Events', events_path, class: "btn btn-secondary" %></p>

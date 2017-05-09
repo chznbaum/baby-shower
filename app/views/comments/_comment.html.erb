@@ -4,13 +4,17 @@
     </div>
     <div class="col-sm-9">
         <div class="row">
-            <p class="h5"><%= link_to comment.user.name, user_path(comment.user) %></p>
+            <p class="h5">
+                <%= link_to comment.user.name, user_path(comment.user) %>
+            </p>
         </div>
         <div class="row">
             <div class="col">
-                <div class="row">
-                    <p>Replying to <%= link_to comment.commentable.user.name, user_path(comment.commentable.user) %></p>
-                </div>
+                <% unless comment.commentable_type == "Event" %>
+                    <div class="row">
+                        <p>Replying to <%= link_to comment.commentable.user.name, user_path(comment.commentable.user) %></p>
+                    </div>
+                <% end %>
                 <div class="row">
                     <p class="lead"><%= comment.body %></p>
                 </div>
@@ -19,7 +23,7 @@
                 </div>
                 <div class="row">
                     <div class="col-6 card-text blog-post-meta">
-                        <%= link_to pluralize(comment.comments.count, "Reply"), update_path(@update), class: "btn btn-secondary btn-block" %>
+                        <%= link_to pluralize(comment.comments.count, "Reply"), '#', class: "btn btn-secondary btn-block" %>
                     </div>
                     <div class="col-6 card-text blog-post-meta">
                         <%= form_for [comment, Like.new] do |f| %>
