@@ -3,5 +3,6 @@
     <p class="lead">About <%= @mother_to_be.name %>'s Baby Shower.</p>
     <p class="lead">
         <%= link_to "Latest Updates", updates_path, class: "btn btn-lg btn-secondary" %>
+        <%= link_to "#{@event.title}", event_path(@event), class: 'btn btn-lg btn-primary' %>
     </p>
 </div>

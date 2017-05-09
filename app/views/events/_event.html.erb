@@ -1,0 +1,17 @@
+<div class="card blog-post">
+    <%= image_tag "http://placehold.it/1500x600", alt: "", class: "img-fluid card-img-top" %>
+    <div class="card-block">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <h2><%= link_to event.title, event_path(event) %></h2>
+                </div>
+                <div class="row">
+                    <p class="lead card-text">
+                        <%= event.event_datetime.localtime.strftime("%A, %B %d - %I:%M %p") %> <%= link_to "RSVP", root_url, class: "btn btn-primary" %>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- /.blog-post -->

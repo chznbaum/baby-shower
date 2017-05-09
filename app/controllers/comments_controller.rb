@@ -25,6 +25,7 @@ class CommentsController < ApplicationController
     def find_commentable
         @commentable = Comment.find(params[:comment_id]) if params[:comment_id]
         @commentable = @update = Update.find(params[:update_id]) if params[:update_id]
+        @commentable = @event = Event.find(params[:event_id]) if params[:event_id]
     end
 
 end
