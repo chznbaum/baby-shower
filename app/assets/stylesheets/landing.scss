@@ -9,29 +9,37 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-landing-page/blob/master/LICENSE)
  */
 
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+
 body,
 html {
     width: 100%;
     height: 100%;
+    font-size: 1.1em;
 }
 
-body,
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: 700;
+    font-family: 'Pacifico';
+    padding-bottom: .5em;
+    line-height: 1.3em;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 
+    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", 
+    "Fira Sans", "Droid Sans", "Helvetica Neue", 
+    sans-serif;
 }
 
 .intro-header {
-    padding-top: 50px;
-    padding-bottom: 50px;
     text-align: center;
     color: #f8f8f8;
-    background: url(../img/intro-bg.jpg) no-repeat center center;
+    background: url(intro-bg.jpg) no-repeat center center;
     background-size: cover;
 }
 
@@ -106,9 +114,8 @@ h6 {
 }
 
 .banner {
-    padding: 100px 0;
     color: #f8f8f8;
-    background: url(../img/banner-bg.jpg) no-repeat center center;
+    background: url(banner-bg.jpg) no-repeat center center;
     background-size: cover;
 }
 
@@ -157,4 +164,19 @@ footer {
 
 p.copyright {
     margin: 15px 0 0;
+}
+
+/*
+ * Custom Styles
+ */
+
+.darken-overlay {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.banner-overlay {
+    padding: 100px 0;
 }
