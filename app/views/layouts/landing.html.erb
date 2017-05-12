@@ -40,92 +40,35 @@
 
     <!-- Header -->
     <header class="intro-header">
-        <div class="darken-overlay">
+        <% if current_page?(root_path) %>
+            <div class="darken-overlay">
+        <% else %>
+            <div class="darken-overlay-short">
+        <% end %>
         <div class="container">
-            <div class="intro-message">
+            <% if current_page?(root_path) %>
+                <div class="intro-message">
+            <% else %>
+                <div class="intro-message intro-short">
+            <% end %>
                 <h1><%= @page_title %></h1>
-                <hr class="intro-divider">
-                <ul class="list-inline intro-social-buttons">
-                    <li class="list-inline-item">
-                        <%= link_to "Latest Updates", updates_path, class: "btn btn-lg btn-secondary" %>
-                    </li>
-                    <li class="list-inline-item">
-                        <%= link_to "#{Event.order(:event_datetime).first.title}", event_path(Event.order(:event_datetime).first), class: 'btn btn-lg btn-secondary' %>
-                    </li>
-                </ul>
+                <% if current_page?(root_path) %>
+                    <hr class="intro-divider">
+                    <ul class="list-inline intro-social-buttons">
+                        <li class="list-inline-item">
+                            <%= link_to "Latest Updates", updates_path, class: "btn btn-lg btn-secondary" %>
+                        </li>
+                        <li class="list-inline-item">
+                            <%= link_to "#{Event.order(:event_datetime).first.title}", event_path(Event.order(:event_datetime).first), class: 'btn btn-lg btn-secondary' %>
+                        </li>
+                    </ul>
+                <% end %>
             </div>
         </div>
         </div>
     </header>
 
-    <!-- Page Content -->
-    <section class="content-section-a">
-
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5">
-                    <hr class="section-heading-spacer">
-                    <div class="clearfix"></div>
-                    <h2 class="section-heading">Good Food for Great Company</h2>
-                    <p>A variety of nourishing choices to meet diverse dietary lifestyles, including:</p>
-                    <ul>
-                        <li>Sub sandwiches courtesy of Subway</li>
-                        <li>Chicken and seafood kebabs from Zo&euml;s Kitchen</li>
-                        <li>And more...</li>
-                    </ul>
-                </div>
-                <div class="col-lg-5 offset-lg-2">
-                    <%= image_tag "subs.jpg", alt: "", class: "img-fluid rounded"%>
-                </div>
-            </div>
-
-        </div>
-        <!-- /.container -->
-    </section>
-
-    <section class="content-section-b">
-
-        <div class="container">
-
-            <div class="row">
-                <div class="col-lg-5 push-lg-7">
-                    <hr class="section-heading-spacer">
-                    <div class="clearfix"></div>
-                    <h2 class="section-heading">Fun and Games for All</h2>
-                    <p>A welcoming space for loved ones of all ages and genders, with games and activities to help everyone enjoy themselves.</p>
-                </div>
-                <div class="col-lg-5 pull-lg-5">
-                    <%= image_tag "game.jpg", alt: "", class: "img-fluid rounded"%>
-                </div>
-            </div>
-
-        </div>
-        <!-- /.container -->
-
-    </section>
-    <!-- /.content-section-b -->
-
-    <section class="content-section-a">
-
-        <div class="container">
-
-            <div class="row">
-                <div class="col-lg-5">
-                    <hr class="section-heading-spacer">
-                    <div class="clearfix"></div>
-                    <h2 class="section-heading">Share a Special Moment with our Family</h2>
-                    <p>Spend quality time with the mom-to-be before the impending arrival of the newest member of the Constant family.</p>
-                </div>
-                <div class="col-lg-5 offset-lg-2">
-                    <%= image_tag "ultrasound.jpg", alt: "", class: "img-fluid rounded"%>
-                </div>
-            </div>
-
-        </div>
-        <!-- /.container -->
-
-    </section>
-    <!-- /.content-section-a -->
+    <%= yield %>
 
     <aside class="banner">
         <div class="darken-overlay banner-overlay">

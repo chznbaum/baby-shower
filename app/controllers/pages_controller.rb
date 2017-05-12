@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  layout 'landing'
   def home
     @event = Event.order(:event_datetime).first
   end
@@ -9,7 +10,7 @@ class PagesController < ApplicationController
   end
 
   def help
-    @page_title = "Help and FAQ"
+    @page_title = "Help and Frequently Asked Questions"
   end
 
   def contact

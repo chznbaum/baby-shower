@@ -1,48 +1,47 @@
-<div class="col-sm-8 blog-main">
+<!-- Page Content -->
+<section class="content-section-a">
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-    <div class="card blog-post">
-        <%= image_tag "http://placehold.it/1500x600", alt: "", class: "img-fluid card-img-top" %>
-        <div class="card-block">
-            <div class="row">
-                <div class="col-12">
-                    <div class="row">
-                        <h2><%= @event.title %></h2>
-                    </div>
-                    <div class="row">
-                        <p class="lead card-text">
-                            <%= @event.event_datetime.localtime.strftime("%A, %B %d - %I:%M %p") %> <%= link_to "RSVP", root_url, class: "btn btn-primary" %>
-                        </p>
-                    </div>
-                    <div class="row">
-                        <p class="lead card-text">
-                            RSVP by <%= @event.rsvp_datetime.localtime.strftime("%A, %B %d - %I:%M %p") %>
-                        </p>
-                    </div>
-                    <div class="row">
-                        <p class="lead card-text">
-                            <%= @event.description %>
-                        </p>
-                    </div>
-                </div>
+    <div class="container">
+        <div class="row">
+            <p class="notice"><%= notice %></p>
+            <p class="alert"><%= alert %></p>
+        </div>
+        <div class="row">
+            <div class="col-lg-5">
+                <hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                <h2 class="section-heading"><%= @event.title %></h2>
+                <p><%= @event.event_datetime.localtime.strftime("%A, %B %d - %I:%M %p") %></p>
+                <p>RSVP by <%= @event.rsvp_datetime.localtime.strftime("%A, %B %d - %I:%M %p") %></p>
+            </div>
+            <div class="col-lg-5 offset-lg-2">
+                <img src="http://placehold.it/800x600" class="img-fluid rounded" alt="">
             </div>
         </div>
-        <div class="card-block">
-            <% unless current_user.is_a?(GuestUser) %>
-                <%= form_for [@user, @event, Comment.new] do |f| %>
-                    <%= f.text_area :body, placeholder: "Add a comment", class: "form-control" %>
-                    <%= f.hidden_field :event_id, value: @event.id %>
-                    <%= f.hidden_field :user_id, value: current_user.id %>
-                    <%= f.submit "Add Comment", class: "btn btn-secondary" %>
+        <div class="row">
+            <div class="col-12">
+                <p><%= @event.description %></p>
+                <p><%= link_to 'Back to Events', events_path, class: "btn btn-secondary" %></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <% unless current_user.is_a?(GuestUser) %>
+                    <%= form_for [@user, @event, Comment.new] do |f| %>
+                        <%= f.text_area :body, placeholder: "Add a comment", class: "form-control" %>
+                        <%= f.hidden_field :event_id, value: @event.id %>
+                        <%= f.hidden_field :user_id, value: current_user.id %>
+                        <%= f.submit "Add Comment", class: "btn btn-secondary" %>
+                    <% end %>
                 <% end %>
-            <% end %>
+            </div>
         </div>
-        <div class="card-block">
-            <%= render(partial: 'comments/comment', collection: @event.comments) %>
+        <div class="row">
+            <div class="col-12">
+                <%= render(partial: 'comments/comment', collection: @event.comments) %>
+            </div>
         </div>
-    </div><!-- /.blog-post -->
-        
-    <p><%= link_to 'Back to Events', events_path, class: "btn btn-secondary" %></p>
-</div><!-- /.blog-main -->
+
+    </div>
+    <!-- /.container -->
+</section>

@@ -1,17 +1,34 @@
-<div class="card blog-post">
-    <%= image_tag "http://placehold.it/1500x600", alt: "", class: "img-fluid card-img-top" %>
-    <div class="card-block">
+<!-- Page Content -->
+<% if event.id.odd? %>
+    <section class="content-section-a">
+<% elsif event.id.even? %>
+    <section class="content-section-b">
+<% end %>
+    <div class="container">
         <div class="row">
-            <div class="col-12">
-                <div class="row">
-                    <h2><%= link_to event.title, event_path(event) %></h2>
-                </div>
-                <div class="row">
-                    <p class="lead card-text">
-                        <%= event.event_datetime.localtime.strftime("%A, %B %d - %I:%M %p") %> <%= link_to "RSVP", root_url, class: "btn btn-primary" %>
-                    </p>
-                </div>
+            <% if event.id.odd? %>
+                <div class="col-lg-5">
+            <% elsif event.id.even? %>
+                <div class="col-lg-5 push-lg-7">
+            <% end %>
+                <hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                <h2 class="section-heading"><%= event.title %></h2>
+                <p><%= event.event_datetime.localtime.strftime("%A, %B %d - %I:%M %p") %></p>
+                <p>
+                    <%= link_to "Learn More", event_path(event), class: "btn btn-secondary" %>
+                    <%= link_to "RSVP", event_path(event), class: "btn btn-secondary" %>
+                </p>
+            </div>
+            <% if event.id.odd? %>
+                <div class="col-lg-5 offset-lg-2">
+            <% elsif event.id.even? %>
+                <div class="col-lg-5 pull-lg-5">
+            <% end %>
+                <img src="http://placehold.it/900x600" class="img-fluid rounded" alt="">
             </div>
         </div>
+
     </div>
-</div><!-- /.blog-post -->
+    <!-- /.container -->
+</section>
