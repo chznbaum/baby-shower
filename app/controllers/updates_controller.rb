@@ -1,7 +1,7 @@
 class UpdatesController < ApplicationController
   before_action :set_update, only: [:show, :edit, :update, :destroy]
 
-  layout 'update'
+  layout 'landing'
 
   access all: [:show, :index], user: { except: [:destroy, :new, :create, :update, :edit]}, mom: :all, helper: :all, admin: :all
 

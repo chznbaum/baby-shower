@@ -1,49 +1,57 @@
-<div class="card blog-post">
-    <div class="card-block">
+<!-- Page Content -->
+<% if update.id.odd? %>
+    <section class="content-section-a">
+<% elsif update.id.even? %>
+    <section class="content-section-b">
+<% end %>
+    <div class="container">
         <div class="row">
-            <div class="col-sm-3">
-                <%= image_tag update.user.avatar, alt: "", class: "img-fluid rounded" unless update.user.avatar.nil? %>
-            </div>
-            <div class="col-sm-9">
+            <p class="notice"><%= notice %></p>
+            <p class="alert"><%= alert %></p>
+        </div>
+        <div class="row">
+            <% if update.image.nil? %>
+                <div class="col-12">
+            <% elsif update.id.odd? %>
+                <div class="col-lg-5">
+            <% elsif update.id.even? %>
+                <div class="col-lg-5 push-lg-7">
+            <% end %>
+                <p class="lead"><%= update.body %></p>
+                <p>Posted by <%= link_to update.user.name, user_path(update.user) %>, <%= time_ago_in_words(update.created_at) %> ago</p>
                 <div class="row">
-                    <p class="h5"><%= link_to update.user.name, user_path(update.user) %></p>
-                </div>
+                    <% if current_user.has_roles?(:admin, :mom, :helper) && update.user == current_user %>
+                        <div class="col-6 card-text blog-post-meta">
+                            <%= link_to 'Edit', edit_update_path(update), class: "btn btn-secondary btn-block" %>
+                        </div>
+                        <div class="col-6 card-text blog-post-meta">
+                            <%= link_to 'Delete Update', update, method: :delete, data: { confirm: 'Are you sure you want to delete that update?' }, class: "btn btn-danger btn-block" %>
+                        </div>
+                    <% end %>
+                </div>  
                 <div class="row">
-                    <div class="col">
-                        <div class="row">
-                            <p class="lead card-text"><%= update.body %></p>
-                        </div>
-                        <div class="row">
-                            <%= image_tag update.image, alt: "", class: "img-fluid card-img-top" unless update.image.nil? %>
-                        </div>
-                        <div class="row">
-                            <p class="card-text blog-post-meta">Posted <%= time_ago_in_words(update.created_at) %> ago</p>
-                        </div>
-                        <div class="row">
-                            <% if current_user.has_roles?(:admin, :mom, :helper) && update.user == current_user %>
-                                <div class="col-6 card-text blog-post-meta">
-                                    <%= link_to 'Edit', edit_update_path(update), class: "btn btn-secondary btn-block" %>
-                                </div>
-                                <div class="col-6 card-text blog-post-meta">
-                                    <%= link_to 'Delete Update', update, method: :delete, data: { confirm: 'Are you sure you want to delete that update?' }, class: "btn btn-danger btn-block" %>
-                                </div>
-                            <% end %>
-                        </div>
-                        <div class="row">
-                            <div class="col-6 card-text blog-post-meta">
-                                <%= link_to pluralize(update.comments.count, "Comment"), update_path(update), class: "btn btn-secondary btn-block" %>
-                            </div>
-                            <div class="col-6 card-text blog-post-meta">
-                                <%= form_for [update, Like.new] do |f| %>
-                                    <%= f.hidden_field :update_id, value: update.id %>
-                                    <%= f.hidden_field :user_id, value: current_user.id %>
-                                    <%= f.submit pluralize(update.likes.count, 'Like'), class: "btn btn-secondary btn-block" %>
-                                <% end %>
-                            </div>
-                        </div>
+                    <div class="col-6">
+                        <%= link_to pluralize(update.comments.count, "Comment"), update_path(update), class: "btn btn-secondary btn-block" %>
+                    </div>
+                    <div class="col-6">
+                        <%= form_for [update, Like.new] do |f| %>
+                            <%= f.hidden_field :update_id, value: update.id %>
+                            <%= f.hidden_field :user_id, value: current_user.id %>
+                            <%= f.submit pluralize(update.likes.count, 'Like'), class: "btn btn-secondary btn-block" %>
+                        <% end %>
                     </div>
                 </div>
             </div>
+            <% unless update.image.nil? %>
+                <% if update.id.odd? %>
+                    <div class="col-lg-5 offset-lg-2">
+                <% elsif update.id.even? %>
+                    <div class="col-lg-5 pull-lg-5">
+                <% end %>
+                    <%= image_tag update.image, alt: "", class: "img-fluid rounded" %>
+                </div>
+            <% end %>
         </div>
     </div>
-</div><!-- /.blog-post -->
+    <!-- /.container -->
+</section>

@@ -1,11 +1,19 @@
-<div class="col-sm-8 blog-main">
+<section class="content-section-a">
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div class="container">
+        <div class="row">
+            <p class="notice"><%= notice %></p>
+            <p class="alert"><%= alert %></p>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <%= render 'form', update: @update %>
+            </div>
+        </div>
+        <div class="row">
+            <%= link_to 'Show', @update, class: "btn btn-secondary" %> 
+            <%= link_to 'Back', updates_path, class: "btn btn-secondary" %>
+        </div>
+    </div>
 
-    <%= render 'form', update: @update %>
-
-    <%= link_to 'Show', @update %> |
-    <%= link_to 'Back', updates_path %>
-
-</div><!-- /.blog-main -->
+</section>
